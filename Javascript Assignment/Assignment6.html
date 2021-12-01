@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data in Table format</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        form{
+  display:flex;
+  flex-direction:column;
+  width:40vw;
+  height: 20vw;
+  border: 2px solid blueviolet;
+  display: inline-block;
+}
+form input{
+  padding:0.7em 1em;
+  border: 1px solid brown;
+}
+form span{
+  padding:0.6em 1em;
+}
+form > button{
+  padding:1.1em;
+  margin:1em 1em;
+  cursor:pointer;
+  background-color: chocolate;
+}
+ul{
+  list-style:none;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  justify-content:center;
+  width:25vw;
+
+}
+ul li{
+  padding:1em 2em .8em 2em;
+  border:1px solid black;
+
+}
+    </style>
+</head>
+<body>
+    <form action="#" id="form1" method="get">
+        <span aria-modal="">Name</span>
+        <input type="Name" placeholder="enter your Name" id="name" style="margin-top: 5px;">
+        <br>
+        <span>Age</span>
+        <input type="number" placeholder="Age" id="age" style="margin-left: 12px;">
+        <br>
+        <span>State</span>
+        <input type="text" placeholder="Enter State" id="state" style="margin-left: 8px;">
+        <br>
+        <button type="submit" style="width: 400px;">Submit</button>
+      </form>
+     <ul id="data">
+       <li>Name</li>
+       <li>Age</li>
+       <li>State</li>
+     </ul>
+     <script>
+         let form=document.getElementById("form1");
+
+let table=document.getElementById('data');
+form.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  submit();
+})
+
+
+const submit=()=>{
+  let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let state = document.getElementById("state").value;
+
+
+  let newArray = [name,age,state];
+  newArray.forEach((item)=>{
+      var li = document.createElement("li");
+  var text = document.createTextNode(item);
+  li.appendChild(text);
+  table.appendChild(li);
+  })
+  form.reset(); 
+}
+     </script>
+</body>
+</html>

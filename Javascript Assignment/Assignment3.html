@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find the second lowest and greatest number</title>
+</head>
+<body>
+  <script>
+      function SecondGreatestLowest(arr_num)
+{
+  arr_num.sort(function(x,y)
+           {
+           return x-y;
+           });
+  var uniqa = [arr_num[0]];
+  var result = [];
+  
+  for(var j=1; j < arr_num.length; j++)
+  {
+    if(arr_num[j-1] !== arr_num[j])
+    {
+      uniqa.push(arr_num[j]);
+    }
+  }
+    result.push(uniqa[1],uniqa[uniqa.length-2]);
+    document.write("The second lowest and greatest array number is: ")
+  return result.join(',');
+
+  }
+document.write("1,2,3,4,5 <br>");
+document.write(SecondGreatestLowest([1,2,3,4,5]));
+
+  </script>  
+</body>
+</html>

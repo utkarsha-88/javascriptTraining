@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a clock</title>
+</head>
+<body>
+    <h1>Clock that display output in each second</h1>
+    <button onclick="myClock()">Try me</button>
+    <script>
+        function myClock() 
+  {
+  this.cur_date = new Date();
+  this.hours = this.cur_date.getHours();
+  this.minutes = this.cur_date.getMinutes();
+  this.seconds = this.cur_date.getSeconds();
+  }
+myClock.prototype.run = function ()
+  {
+  setInterval(this.update.bind(this), 1000);
+  };
+myClock.prototype.update = function () 
+  {
+  this.updateTime(1);
+  document.write(this.hours + ":" + this.minutes + ":" + this.seconds+"<br>");
+  };
+myClock.prototype.updateTime = function (secs) 
+  {
+  this.seconds+= secs;
+ if (this.seconds >= 60)
+  {
+  this.minutes++;
+  this.seconds= 0;
+  }
+ if (this.minutes >= 60)
+  {
+  this.hours++;
+  this.minutes=0;
+  }
+if (this.hours >= 24)
+  {
+  this.hours = 0;
+  }
+};
+var clock = new myClock();
+  clock.run();
+  
+    </script>
+</body>
+</html>
